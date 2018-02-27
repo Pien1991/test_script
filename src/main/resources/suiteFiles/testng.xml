@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+
+<suite name="AutoTest"  verbose = "2" parallel="tests">
+
+	<listeners>
+		<listener class-name="listeners.TestLinkReporter"></listener>
+	</listeners>
+
+	<parameter name="TEST_PROJECT" value="fintend"/>
+	<parameter name="TEST_PLAN" value="test"/>
+
+
+
+
+	<test name="Regression Test - CHROME,FIREFOX" >
+		<parameter name="DRIVER" value="FIREFOX"/>
+		<parameter name="SYSTEM" value="MAC"/>
+		<packages>
+			<package name="testScript.*"></package>
+		</packages>
+	</test>
+
+
+
+
+	<test name="Regression Test - CHROME,MAC" >
+		<parameter name="DRIVER" value="CHROME"/>
+		<parameter name="SYSTEM" value="MAC"/>
+		<packages>
+			<package name="testScript.*"></package>
+		</packages>
+	</test>
+
+
+
+
+
+
+
+
+
+</suite>

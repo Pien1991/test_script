@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<OpenOrders_Panel method="Xpath" path="//md-dialog[contains(@aria-label,'Activity Filter')]">
+    <Filter_Title method="Xpath"  path=".//div[contains(@class,'Heading')]">
+        <Reset_Button method="TagName" path="span" waitTime="2" />
+    </Filter_Title >
+
+
+
+</OpenOrders_Panel>
