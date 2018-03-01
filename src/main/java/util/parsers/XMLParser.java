@@ -42,24 +42,46 @@ public class XMLParser {
 
 
 
-    private static void treeWalk(HashMap<String,WebElementConfig> map,ArrayList<Element> tempAL,final Element element){
+    private static void treeWalk(HashMap<String,WebElementConfig> map,ArrayList<Element> tempAL,final Element element) throws DocumentException {
 
-        WebElementConfig webElementConfig = loadWebElementConfig(element);
 
-        if (map.keySet().size()==0){
-            webElementConfig.setParentWebElementConfig(null);
+        if (element.attribute("xmlPath")!=null){
+
+            Element subXmlWebElement = read(new File(element.attributeValue("xmlPath"))).getRootElement();
+
+            WebElementConfig subXmlWebElementConfig= loadWebElementConfig(subXmlWebElement);
+            subXmlWebElementConfig.setParentWebElementConfig(loadWebElementConfig(element.getParent()));
+            map.put(subXmlWebElement.getName(),subXmlWebElementConfig);
+
+            tempAL.addAll(subXmlWebElement.elements());
+
+            if (tempAL.size()==0){
+                return;
+            }else {
+                Element subElement = tempAL.remove(0);
+                treeWalk(map,tempAL,subElement);
+            }
         }else {
-            webElementConfig.setParentWebElementConfig(map.get(element.getParent().getName()));
+            WebElementConfig webElementConfig = loadWebElementConfig(element);
+
+            if (map.keySet().size()==0){
+                webElementConfig.setParentWebElementConfig(null);
+            }else {
+                webElementConfig.setParentWebElementConfig(map.get(element.getParent().getName()));
+            }
+
+            map.put(element.getName(),webElementConfig);
+            tempAL.addAll(element.elements());
+            if (tempAL.size()==0){
+                return;
+            }else {
+                Element subElement = tempAL.remove(0);
+                treeWalk(map,tempAL,subElement);
+            }
+
         }
 
-        map.put(element.getName(),webElementConfig);
-        tempAL.addAll(element.elements());
-        if (tempAL.size()==0){
-            return;
-        }else {
-            Element subElement = tempAL.remove(0);
-            treeWalk(map,tempAL,subElement);
-        }
+
 
     }
 

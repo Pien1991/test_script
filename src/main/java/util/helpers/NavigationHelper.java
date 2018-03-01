@@ -12,7 +12,7 @@ public class NavigationHelper {
 
     private static String urlHeader = "http://";
     //TODO : Now is hard-coded .
-    private static String baseUrl = "10.30.92.245:4000" ;
+    private static String baseUrl = "sit.coinpool.com" ;
 
 
 
