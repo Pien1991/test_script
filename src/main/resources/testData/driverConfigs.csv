@@ -1,3 +1,4 @@
 id,driverEnum,system,driverPath
 1,CHROME,MAC,/Users/fintend/Documents/webDriver/chromedriver
-2,FIREFOX,MAC,/Users/fintend/Documents/webDriver/chromedriver
+2,FIREFOX,MAC,/Users/fintend/Documents/webDriver/geckodriver
+3,SAFARI,MAC,

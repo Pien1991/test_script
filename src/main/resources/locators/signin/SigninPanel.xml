@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Signin_Panel method="Xpath" path="//div[@class='main']">
+    <Email_Input method="Id" path="emailinput" />
+    <Password_Input method="Xpath" path="//div[contains(@class,'typepassword')]//input"/>
+    <ShowPassword_Button method="Xpath" path="//div[contains(@class,'typepassword')]//button"/>
+    <ForgotPassword_Link method="Xpath" path="//div[@class='forgotPassword']"/>
+    <Submit_Input method="Xpath" path="//div[@class='submit']//button"/>
+</Signin_Panel>

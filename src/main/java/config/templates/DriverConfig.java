@@ -53,6 +53,8 @@ public class DriverConfig implements DataTemplate {
     public boolean equals(Object obj) {
 
         String compareString = obj.toString();
+
+
         if (compareString.equals(id)){
             return true;
         }
@@ -71,6 +73,9 @@ public class DriverConfig implements DataTemplate {
     }
 
     public boolean equals(DriverConfig driverConfig) {
+
+        System.out.println("equals driverConfig");
+
 
         if (driverConfig.getId().equals(id)){
             return true;

@@ -1,21 +1,19 @@
 package core;
 
 import config.templates.WebElementConfig;
-import org.dom4j.Attribute;
-import org.dom4j.Element;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.ISelect;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.Stack;
 
 import util.EnhancedExpectedCondition;
 import util.EnhancedExpectedConditions;
 import config.LocatorEnum;
-import util.MdSelect;
+import util.elements.MdSelect;
 
 /**
  * Created by ShepardPin on 12/2/2018.
@@ -159,21 +157,23 @@ public abstract class AbstractComponent {
         WebElement selectElement = this.getWebElement(dr,el_key,expectedCondition);
         if (selectElement.getTagName().equals("select")){
             return new Select(selectElement);
-        }else if (selectElement.getTagName().equals("md-select")){
+            //TODO : Need to change better
+        }else if (selectElement.getAttribute("class").contains("md-select")){
 
             // A special process on card selection
-            WebElement menuElements =null;
-            try {
+            List<WebElement> menuElements =null;
+//            try {
                 //Click the select element and pop up the menu , which the html will show.
                 selectElement.click();
-                /*Assume that one page only will exist one md-select-menu!!*/
-                By by = By.xpath("//md-select-menu[parent::div[@aria-hidden='false']]");
-                new WebDriverWait(dr,3).until(ExpectedConditions.presenceOfElementLocated(by));
-                menuElements = dr.findElement(by);
-            } finally {
+                //Assume that one page only will exist one md-select-menu!!
+                // Also make sure to find the final stage of  md-select-menu
+                By by = By.xpath("//div[@class='md-select-menu md-menu-content-bottom-start md-menu-content-small md-menu-content md-theme-default']/div/ul//li");
+                waitExpectedConditions( new WebDriverWait(dr,2),by,null);
+                menuElements = dr.findElements(by);
+//            } finally {
                 /*Also assume that the menuElement will not disappear after pressing ESCAPE but only being hidden*/
-                new Actions(dr).sendKeys(Keys.ESCAPE).perform();
-            }
+//                new Actions(dr).sendKeys(Keys.ESCAPE).perform();
+//            }
             return new MdSelect(selectElement,menuElements);
         }else {
             throw new IllegalArgumentException("The element is not a select , please check the key : " +el_key);

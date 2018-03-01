@@ -28,7 +28,8 @@ public abstract class PageObject {
     public PageObject(WebDriver dr, PagesEnum page){
         this.driver = dr;
         this.page = page;
-        navigateTo();
+        waitUntilLoaded();
+        pageValidation(dr);
     }
 
     public PageObject(WebDriver dr, String url){
@@ -36,16 +37,16 @@ public abstract class PageObject {
         this.page = PagesEnum.FRONT;
         this.driver.get(url);
         waitUntilLoaded();
+        pageValidation(dr);
+
     }
 
-
-    protected void navigateTo(){
-        System.out.println("Before navigation");
-        NavigationHelper.navigate(this.driver,this.page);
-        System.out.println("Finish navigation");
-        pageValidation(this.driver);
-        waitUntilLoaded();
-    }
+    // In page object , we do not handle the navigation
+//    protected void navigateTo(){
+//        NavigationHelper.navigate(this.driver,this.page);
+//        pageValidation(this.driver);
+//        waitUntilLoaded();
+//    }
 
     protected void pageValidation( WebDriver dr) {
         try {

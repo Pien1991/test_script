@@ -10,6 +10,7 @@ public enum  TestConfigEnum {
     DRIVER("DRIVER"),
     SYSTEM("SYSTEM"),
     TEST_PROJECT("TEST_PROJECT"),
+    IS_CLOSE_BROWSER("IS_CLOSE_BROWSER"),
     TEST_PLAN("TEST_PLAN");
 
 

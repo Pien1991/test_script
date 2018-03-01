@@ -1,8 +1,7 @@
-package testScript;
+package debug;
 
 
 
-import core.AbstractTestScript;
 import org.testng.ITestContext;
 import org.testng.annotations.Test;
 
@@ -10,7 +9,7 @@ import org.testng.annotations.Test;
 /**
  * Created by ShepardPin on 13/2/2018.
  */
-public class fd_1 extends AbstractTestScript {
+public class fd_1  {
 
     @Test()
     public void Test1(ITestContext context){

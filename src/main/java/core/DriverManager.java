@@ -34,13 +34,14 @@ public class DriverManager {
             ThreadDriver.set(new HashMap());
         }
 
+        if (ThreadDriver.get().get(driverConfig)==null){
+            driver = BrowserFactory.createBrowser(driverConfig);
+            // Add event handler.
+            EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
+            eventDriver.register(new ReportEventHandler());
+            ThreadDriver.get().put(driverConfig,eventDriver);
+        }
 
-        driver = BrowserFactory.createBrowser(driverConfig);
-
-        // Add event handler.
-        EventFiringWebDriver eventDriver = new EventFiringWebDriver(driver);
-        eventDriver.register(new ReportEventHandler());
-        ThreadDriver.get().put(driverConfig,eventDriver);
     }
 
 }

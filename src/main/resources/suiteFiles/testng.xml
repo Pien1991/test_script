@@ -4,32 +4,40 @@
 
 <suite name="AutoTest"  verbose = "2" parallel="tests">
 
-	<listeners>
-		<listener class-name="listeners.TestLinkReporter"></listener>
-	</listeners>
+	<!--<listeners>-->
+		<!--<listener class-name="listeners.TestLinkReporter"></listener>-->
+	<!--</listeners>-->
 
-	<parameter name="TEST_PROJECT" value="fintend"/>
-	<parameter name="TEST_PLAN" value="test"/>
-
-
+	<!--<parameter name="TEST_PROJECT" value="fintend"/>-->
+	<!--<parameter name="TEST_PLAN" value="test"/>-->
 
 
-	<test name="Regression Test - CHROME,FIREFOX" >
+	<parameter name="IS_CLOSE_BROWSER" value="true"/>
+
+
+	<test name="Regression Test - FIREFOX,MAC" >
 		<parameter name="DRIVER" value="FIREFOX"/>
 		<parameter name="SYSTEM" value="MAC"/>
 		<packages>
-			<package name="testScript.*"></package>
+			<package name="testScripts.*"></package>
 		</packages>
 	</test>
 
 
+	<test name="Regression Test - SAFARI,MAC" >
+		<parameter name="DRIVER" value="SAFARI"/>
+		<parameter name="SYSTEM" value="MAC"/>
+		<packages>
+			<package name="testScripts.*"></package>
+		</packages>
+	</test>
 
 
 	<test name="Regression Test - CHROME,MAC" >
 		<parameter name="DRIVER" value="CHROME"/>
 		<parameter name="SYSTEM" value="MAC"/>
 		<packages>
-			<package name="testScript.*"></package>
+			<package name="testScripts.*"></package>
 		</packages>
 	</test>
 

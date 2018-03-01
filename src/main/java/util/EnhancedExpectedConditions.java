@@ -47,9 +47,6 @@ public class EnhancedExpectedConditions {
     }
 
 
-
-
-
     public static ExpectedCondition<WebElement> clickableForNestedElementsLocatedBy(final WebElement element , final By childLocator ){
         return new ExpectedCondition<WebElement>() {
             private ExpectedCondition<List<WebElement>> visibilityOfNestedElementsLocatedBy = ExpectedConditions.visibilityOfNestedElementsLocatedBy(element,childLocator);

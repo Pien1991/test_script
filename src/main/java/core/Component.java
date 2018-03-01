@@ -28,8 +28,7 @@ public  class Component extends AbstractComponent {
     private WebElementConfig rootWebElementConfig ;
 
 
-    public Component(int time , File file)  {
-        this.waitingTime = time;
+    public Component(File file)  {
         try {
             this.locatorMap = XMLParser.getXMLMap(file);
             rootWebElementConfig = extractRoot(locatorMap.values().iterator().next());
@@ -38,9 +37,6 @@ public  class Component extends AbstractComponent {
         }
     }
 
-    public Component(File file)  {
-        this(0,file);
-    }
 
     public void setWaitingTime(int time){
         this.waitingTime = time ;
@@ -86,6 +82,7 @@ public  class Component extends AbstractComponent {
     protected WebDriverWait configDriverWait(WebDriver driver, WebElementConfig targetElement) {
 
         int elementWaitTime = targetElement.getWaitTime();
+
 
         if (elementWaitTime<=this.waitingTime){
             elementWaitTime = this.waitingTime;

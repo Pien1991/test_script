@@ -41,6 +41,15 @@ public class TestNgXMLHelper {
         return SystemEnum.valueOf(systemName);
     }
 
+    public static boolean getIsCloseBrowser(ITestContext context){
+        String is_close_browser = getXmlParameter(context,TestConfigEnum.IS_CLOSE_BROWSER);
+        if (is_close_browser == null){
+            return false;
+        }else {
+            return Boolean.valueOf(is_close_browser.toLowerCase());
+        }
+    }
+
     public static SystemEnum getSystemEnum(ITestResult result){
         return getSystemEnum(result.getTestContext());
     }

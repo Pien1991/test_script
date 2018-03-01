@@ -2,6 +2,7 @@ package util.helpers;
 
 
 import config.PagesEnum;
+import core.PageObject;
 import org.openqa.selenium.WebDriver;
 
 /**
@@ -9,9 +10,9 @@ import org.openqa.selenium.WebDriver;
  */
 public class NavigationHelper {
 
-    private static String urlHeader = "https://";
+    private static String urlHeader = "http://";
     //TODO : Now is hard-coded .
-    private static String baseUrl = "10.30.92.245:4200" ;
+    private static String baseUrl = "10.30.92.245:4000" ;
 
 
 
@@ -24,10 +25,13 @@ public class NavigationHelper {
      *  The navigation Helper will ONLY help to navigate to page but it will NOT to wait all element until being loaded .
      *
      */
-    public static void navigate(WebDriver driver, PagesEnum page){
+    public static PageObject navigate(WebDriver driver, PagesEnum page){
 
         //TODO : Will be refactored .
         driver.get(urlHeader+baseUrl+page.toString());
+
+        return page.getPageObject(driver);
+
     }
 
 

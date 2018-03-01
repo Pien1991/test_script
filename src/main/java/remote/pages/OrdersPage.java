@@ -25,7 +25,7 @@ public class OrdersPage extends PageObject {
 
 
 
-    enum Components implements ComponentImp {
+    public enum Components implements ComponentImp {
         OPEN_ORDER_PANEL{
             @Override
             public String getPath() {
