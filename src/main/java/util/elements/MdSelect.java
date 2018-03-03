@@ -2,6 +2,7 @@ package util.elements;
 
 import core.DriverManager;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ISelect;
 import org.openqa.selenium.support.ui.Quotes;
 import org.openqa.selenium.support.ui.UnexpectedTagNameException;
@@ -21,19 +22,13 @@ public class MdSelect implements ISelect {
     private final WebElement selectElement;
     private final List<WebElement> menuElements;
     private final boolean isMulti;
+    private final  WebDriver driver;
 
-    public MdSelect(WebElement select ,List<WebElement> menuElement) {
-
-
-        if(null != select && select.getAttribute("class").toLowerCase().contains("md-select")) {
-            this.selectElement = select;
-        } else {
-            throw new UnexpectedTagNameException("md-select", select.getAttribute("class"));
-        }
-
+    public MdSelect(WebDriver driver,WebElement select ,List<WebElement> menuElement) {
+        this.selectElement = select;
         this.menuElements = menuElement;
+        this.driver=driver;
         this.isMulti = this.getOptions().size()>1? true: false;
-
     }
 
 
@@ -68,11 +63,13 @@ public class MdSelect implements ISelect {
 
         while (var4.hasNext()) {
             WebElement next = (WebElement) var4.next();
-
             if (next.getText().trim().equals(value)){
-                next.click();
-                //For safari , the element is invisible. After trying to click the button , browser
-                // will scroll down to it and make it visible .Then we can click .
+                try {
+                    next.click();
+                }catch (ElementNotVisibleException e){
+                    JavascriptExecutor js = (JavascriptExecutor)driver;
+                    js.executeScript("arguments[0].click();", next);
+                }
                 matched=true;
                 break;
             }

@@ -158,7 +158,7 @@ public abstract class AbstractComponent {
         if (selectElement.getTagName().equals("select")){
             return new Select(selectElement);
             //TODO : Need to change better
-        }else if (selectElement.getAttribute("class").contains("md-select")){
+        }else if (selectElement.getAttribute("class").contains("ant-select-selection__rendered")){
 
             // A special process on card selection
             List<WebElement> menuElements =null;
@@ -167,14 +167,14 @@ public abstract class AbstractComponent {
                 selectElement.click();
                 //Assume that one page only will exist one md-select-menu!!
                 // Also make sure to find the final stage of  md-select-menu
-                By by = By.xpath("//div[@class='md-select-menu md-menu-content-bottom-start md-menu-content-small md-menu-content md-theme-default']/div/ul//li");
-                waitExpectedConditions( new WebDriverWait(dr,2),by,null);
+                By by = By.xpath("//ul[contains(@class,'ant-select-dropdown-menu')]//li");
+                waitExpectedConditions( new WebDriverWait(dr,2),by,EnhancedExpectedConditions.presenceOfElementLocated());
                 menuElements = dr.findElements(by);
 //            } finally {
                 /*Also assume that the menuElement will not disappear after pressing ESCAPE but only being hidden*/
 //                new Actions(dr).sendKeys(Keys.ESCAPE).perform();
 //            }
-            return new MdSelect(selectElement,menuElements);
+            return new MdSelect(dr,selectElement,menuElements);
         }else {
             throw new IllegalArgumentException("The element is not a select , please check the key : " +el_key);
         }

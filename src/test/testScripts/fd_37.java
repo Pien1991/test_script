@@ -13,7 +13,10 @@ import util.helpers.NavigationHelper;
 
 /**
  * Created by ShepardPin on 27/2/2018.
+ * Will not execute this script as front end is not ready!
+ *
  */
+@Test(enabled = false)
 public class fd_37 extends DriverTestScript{
 
     @Test

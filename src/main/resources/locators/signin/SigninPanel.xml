@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Signin_Panel method="Xpath" path="//div[@class='main']">
-    <Email_Input method="Id" path="emailinput" />
-    <Password_Input method="Xpath" path="//div[contains(@class,'typepassword')]//input"/>
-    <ShowPassword_Button method="Xpath" path="//div[contains(@class,'typepassword')]//button"/>
+    <Email_Input method="Xpath" path="//input[@placeholder='UserEmail']" />
+    <Password_Input method="Xpath" path="//input[@placeholder='Password']">
+        <ShowPassword_Button method="Xpath" path="//i"/>
+    </Password_Input>
     <ForgotPassword_Link method="Xpath" path="//div[@class='forgotPassword']"/>
-    <Submit_Input method="Xpath" path="//div[@class='submit']//button"/>
+    <Submit_Input method="Xpath" path="//button[contains(@class,'login-form-button')]"/>
+    <ErrorMessage_Text method="Xpath" path="//div[contains(@class,'ant-form-explain')]" >
+        <ErrorMessage_Link method="Xpath" path="//a" />
+    </ErrorMessage_Text>
 </Signin_Panel>

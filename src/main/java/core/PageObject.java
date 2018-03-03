@@ -2,6 +2,7 @@ package core;
 
 
 
+import config.ComponentImp;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -57,6 +58,6 @@ public abstract class PageObject {
     }
 
 
-
     protected abstract  void waitUntilLoaded();
+
 }

@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <Registration_Panel method="Xpath" path="//div[@class='main']">
-    <Email_Input method="Id"  path="emailinput"/>
-    <Locations_Select  method="Xpath"  path="//div[contains(@class, 'md-select')]" />
-    <Submit_Button method="Xpath"  path="//div[@class='submit']/button"/>
+    <Email_Input method="TagName"  path="input"/>
+    <Locations_Select  method="Xpath"  path="//div[contains(@class,'ant-select-selection__rendered')]" />
 
     <CancelEmailInput_Button method="Xpath"  path="//button[contains(@class,'md-input-action')]"/>
 
-    <Error_Span  method="Xpath"  path="//span[@class='md-error']"/>
+    <Error_Span  method="Xpath"  path="//div[contains(@class,'ant-form-explain')]"/>
 
-    <VerifiedEmailError_Text  method="Xpath"  path="//div[@class='verified']">
-        <VerifiedEmail_Link method="TagName" path="a"  />
-    </VerifiedEmailError_Text>
 
-    <Accept_Box method="Xpath" path="//div[@class='acceptance']//div[@class='md-checkbox-container']" />
-    <TermOfUse_Link method="Id" path="term" />
+    <UserTerm_Box method="Id" path="userTerms" />
+
+    <Accept_Box method="Xpath" path="//span[@class='ant-checkbox-inner']" />
+    <TermOfUse_Link method="Xpath" path="//a[@class='ant-dropdown-trigger']" />
+
+
+    <Submit_Button method="Xpath"  path="//button[contains(@class,'login-form-button')]"/>
+
+
+
 </Registration_Panel>
