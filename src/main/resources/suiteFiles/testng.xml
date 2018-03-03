@@ -15,13 +15,13 @@
 	<parameter name="IS_CLOSE_BROWSER" value="false"/>
 
 
-	<!--<test name="Regression Test - FIREFOX,MAC" >-->
-		<!--<parameter name="DRIVER" value="FIREFOX"/>-->
-		<!--<parameter name="SYSTEM" value="MAC"/>-->
-		<!--<packages>-->
-			<!--<package name="testScripts.*"></package>-->
-		<!--</packages>-->
-	<!--</test>-->
+	<test name="Regression Test - FIREFOX,MAC" >
+		<parameter name="DRIVER" value="FIREFOX"/>
+		<parameter name="SYSTEM" value="MAC"/>
+		<packages>
+			<package name="testScripts.*"></package>
+		</packages>
+	</test>
 
 
 

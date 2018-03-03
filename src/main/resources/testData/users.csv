@@ -1,3 +1,4 @@
 id,userName,password,firstName,lastName,companyName,alias,user_id
 1,shepardpin_unverified@fintend.com,,,,,unverified_user,
 2,shepardpin_register_verified@fintend.com,123456789CN,,,,verified_non_kyc_user,
+3,shepardpin+no_bank_account@fintend.com,123456789CN,,,,verified_no_bank_account user,
