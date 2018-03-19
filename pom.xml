@@ -103,6 +103,19 @@
             <version>2.1</version>
         </dependency>
 
+
+        <!-- Only for quick create data -->
+        <dependency>
+            <groupId>org.clojure</groupId>
+            <artifactId>java.jdbc</artifactId>
+            <version>0.7.5</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.41</version>
+        </dependency>
+
     </dependencies>
 
 </project>

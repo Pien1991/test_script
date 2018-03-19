@@ -1,11 +1,7 @@
 package util.elements;
 
-import core.DriverManager;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ISelect;
-import org.openqa.selenium.support.ui.Quotes;
-import org.openqa.selenium.support.ui.UnexpectedTagNameException;
 
 import java.util.Iterator;
 import java.util.List;

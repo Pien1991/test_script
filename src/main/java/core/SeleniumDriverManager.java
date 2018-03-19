@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Created by ShepardPin on 12/2/2018.
  */
-public class DriverManager {
+public class SeleniumDriverManager {
 
 
     private static ThreadLocal<Map<DriverConfig,WebDriver>> ThreadDriver = new ThreadLocal<>();

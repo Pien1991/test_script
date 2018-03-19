@@ -1,11 +1,9 @@
-package testScripts;
+package testScripts.userAccountSystem;
 
 import config.PagesEnum;
 import core.DriverTestScript;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import remote.pages.RegisterPage;
@@ -16,7 +14,6 @@ import util.helpers.NavigationHelper;
  * Will not execute this script as front end is not ready!
  *
  */
-@Test(enabled = false)
 public class fd_37 extends DriverTestScript{
 
     @Test

@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 
-<suite name="AutoTest"  verbose = "2" parallel="tests">
+<suite name="AutoTest"  verbose = "2" parallel="false">
 
 	<!--<listeners>-->
 		<!--<listener class-name="listeners.TestLinkReporter"></listener>-->
@@ -15,13 +15,15 @@
 	<parameter name="IS_CLOSE_BROWSER" value="false"/>
 
 
-	<test name="Regression Test - FIREFOX,MAC" >
-		<parameter name="DRIVER" value="FIREFOX"/>
-		<parameter name="SYSTEM" value="MAC"/>
-		<packages>
-			<package name="testScripts.*"></package>
-		</packages>
-	</test>
+	<!--<test name="Regression Test - FIREFOX,MAC" >-->
+		<!--<parameter name="DRIVER" value="FIREFOX"/>-->
+		<!--<parameter name="SYSTEM" value="MAC"/>-->
+		<!--<packages>-->
+			<!--<package name="testScripts.*">-->
+				<!--<exclude name="testScripts.fd_37"/>-->
+			<!--</package>-->
+		<!--</packages>-->
+	<!--</test>-->
 
 
 
@@ -29,7 +31,8 @@
 		<parameter name="DRIVER" value="CHROME"/>
 		<parameter name="SYSTEM" value="MAC"/>
 		<packages>
-			<package name="testScripts.*"></package>
+			<package name="testScripts.*">
+			</package>
 		</packages>
 	</test>
 

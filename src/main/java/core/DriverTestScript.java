@@ -32,7 +32,7 @@ public class DriverTestScript extends AbstractTestScript{
 
 
 
-        driver = DriverManager.getDriver(driverConfig);
+        driver = SeleniumDriverManager.getDriver(driverConfig);
 
 
 

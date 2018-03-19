@@ -1,4 +1,4 @@
-package testScripts;
+package testScripts.userAccountSystem;
 
 import config.PagesEnum;
 import config.templates.User;

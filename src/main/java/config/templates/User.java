@@ -18,11 +18,11 @@ public class User implements DataTemplate {
     @CsvBindByName
     private String lastName = null;
     @CsvBindByName
-    private String companyName = null;
-    @CsvBindByName
     private String alias = null;
     @CsvBindByName
     private String user_id = null;
+    @CsvBindByName
+    private String comment = null;
 
 
 
@@ -51,8 +51,6 @@ public class User implements DataTemplate {
         return alias;
     }
 
-    public String getCompanyName() {return companyName;}
-
     public String getUserId() {
         return user_id;
     }
@@ -63,6 +61,14 @@ public class User implements DataTemplate {
 
     public void setPassword(String pw ){
         this.password = pw;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public String getComment() {
+        return comment;
     }
 
     @Override
@@ -89,9 +95,6 @@ public class User implements DataTemplate {
             return true;
         }
         else if (compareString.equals(alias)){
-            return true;
-        }
-        else if (compareString.equals(companyName)){
             return true;
         }
         else if (compareString.equals(user_id)){

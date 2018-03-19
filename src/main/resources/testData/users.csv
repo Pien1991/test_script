@@ -1,4 +1,18 @@
-id,userName,password,firstName,lastName,companyName,alias,user_id
-1,shepardpin_unverified@fintend.com,,,,,unverified_user,
-2,shepardpin_register_verified@fintend.com,123456789CN,,,,verified_non_kyc_user,
-3,shepardpin+no_bank_account@fintend.com,123456789CN,,,,verified_no_bank_account user,
+id,userName,password,firstName,lastName,alias,user_id,comment
+1,shepardpin_unverified@fintend.com,,,,unverified_user,,
+2,shepardpin_register_verified@fintend.com,123456789CN,,,verified_non_kyc_user,,
+3,shepardpin+no_bank_account@fintend.com,123456789CN,,,verified_no_bank_account user,d91c234c-304b-4cd2-b40d-33f2e5bc664a,
+4,shepardpin+sso_admin@fintend.com,123456789CN,,,sso_admin_user,,
+5,shepardpin+fifty_one_bank_account_user@fintend.com,123456789CN,,,fifty_one_bank_account_user,,
+6,shepardpin+cashier_non_deposit_transfer@fintend.com,123456789CN,,,no_deposit_transfer_cashier,,
+7,shepardpin+three_bank_account@fintend.com,123456789CN,,,three_bank_account_user,,
+8,shepardpin+addressTest@fintend.com,123456789CN,,,address_test_user,f687317a-6085-4722-be45-9e56d9d86094,
+9,shepardpin+ethegateway_admin@fintend.com,123456789CN,,,ethegatway_admin,44f9e4ae-e06c-47e6-83e3-dcd2a4802c01,it is for api test for ether gateway admin
+10,shepardpin+coin_withdrawal_test@fintend.com,123456789CN,,,coin_withdrawal_user,01951434-c312-48d1-905f-8020e5a8833b,it is for api test for coin withdrawal 
+11,shepardpin_coin_deposit_test@fintend.com,123456789CN,,,coin_deposit_user,7c17aed6-e9ae-41bd-a1e1-57c72a53d4cc,it is for api test for coin deposit 
+12,shepardpin+update_bank_account_user@fintend.com,123456789CN,,,bank_account_update,a7d237d0-5e62-4dc3-949c-4f23822ea6a0,it is for api test for update bank account.User only gets one bank account
+13,shepardpin+bank_account_paging_test@fintend.com,123456789CN,,,bank_account_paging_test,14d87094-9667-47aa-8d5b-20844c96d402,It is for front end test for account paging issue. Defualt user gets three bank account
+14,shepardpin+fiat_deposit_test@fintend.com,123456789CN,,,fiat_deposit_user,1786a955-7357-45fb-bc8e-59f6132813d2,
+15,shepardpin+fiat_withdrawal_test@fintend.com,123456789CN,,,withdrawal_deposit_user,c594519b-787c-4df9-97fb-148c66180e01,It is for api test for fiat withdrawal . Default user gets ONE bank account
+16,shepardpin+order_test@fintend.com,123456789CN,,,,,
+17,shepardpin+coin_address_display_test@fintend.com,123456789CN,,,coin_address_display_user,,It is for front end test for coin address display. Default user gets TWO coin address
