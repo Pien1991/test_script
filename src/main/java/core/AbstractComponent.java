@@ -15,6 +15,7 @@ import util.EnhancedExpectedConditions;
 import config.LocatorEnum;
 import util.elements.MdSelect;
 
+
 /**
  * Created by ShepardPin on 12/2/2018.
  */
@@ -22,9 +23,9 @@ public abstract class AbstractComponent {
 
     protected abstract WebDriverWait configDriverWait(WebDriver driver, WebElementConfig targetElement);
     protected abstract WebElementConfig getXMLElement(String el_key);
-    protected abstract By extractLocator(String el_key );
+    protected abstract By extractLocator(String el_key , Integer row);
 
-    public  final WebElement getWebElement(WebDriver dr, String el_key, EnhancedExpectedCondition expectedCondition){
+    public  final WebElement getWebElement(WebDriver dr, String el_key, EnhancedExpectedCondition expectedCondition,Integer row){
         //Get element from XML .
         WebElementConfig element = getXMLElement(el_key);
         if (element==null){
@@ -33,7 +34,7 @@ public abstract class AbstractComponent {
         //Put into stack
         Stack<WebElementConfig> stack = loadStack(element);
         //search the element
-        WebElement webElement = searchWebElement(stack,dr,expectedCondition);
+        WebElement webElement = searchWebElement(stack,dr,expectedCondition,row);
         if (webElement==null){
             throw  new WebDriverException("No WebElement can be found , please check the element key : "+el_key);
         }
@@ -42,8 +43,9 @@ public abstract class AbstractComponent {
     }
 
     public  final WebElement getWebElement(WebDriver dr, String el_key){
-        return this.getWebElement(dr,el_key,null);
+        return this.getWebElement(dr,el_key,null,null);
     }
+
 
     private  Stack loadStack(WebElementConfig element){
         Stack stack = new Stack();
@@ -57,32 +59,59 @@ public abstract class AbstractComponent {
         if (stack.size()==0){
             throw  new IllegalStateException("No element can be found , please check the element key : "+element.getName());
         }
-
         return stack;
     }
 
-    private  WebElement searchWebElement(Stack<WebElementConfig> stack,WebDriver dr,EnhancedExpectedCondition expectedCondition){
+    private  WebElement searchWebElement(Stack<WebElementConfig> stack,WebDriver dr,EnhancedExpectedCondition expectedCondition , Integer row){
         WebDriverWait wait = null;
 
         WebElement webElement = null;
 
+        By by =null;
+
         while (!stack.empty()) {
             //Pop the element from the top of stack
             WebElementConfig targetElement = stack.pop();
-            //Get the By locator from element
-            By by = extractLocator(targetElement.getName());
-            // Set up the driver wait object
+
+
+            if (targetElement.isMulti()!=true){
+                //Get the By locator from element
+                by = extractLocator(targetElement.getName(),null);
+                // Set up the driver wait object
+
+            }else {
+
+                if (!targetElement.getMethod().toLowerCase().equals("xpath")){
+                    throw new IllegalArgumentException("The key is not Xpath , therefore cannot get list element please check key : "+targetElement.getName());
+                }
+
+                if (row ==null){
+                    throw new IllegalArgumentException("As a list element  , Please provide row information for key : "+targetElement.getName());
+                }
+
+                by = extractLocator(targetElement.getName(),row);
+
+
+            }
+
             wait = configDriverWait(dr,targetElement);
 
             //Wait the element until the condition achieved
             if (targetElement.isComponentRoot()){
                 waitExpectedConditions(wait,by,expectedCondition);
                 webElement = dr.findElement(by);
+
+
             }else {
                 waitExpectedConditions(wait,webElement,by,expectedCondition);
                 webElement = webElement.findElement(by);
             }
+
+
+
+
         }
+
 
         return webElement;
     }
@@ -132,17 +161,34 @@ public abstract class AbstractComponent {
 
 
 
-    protected   By extractLocator(WebElementConfig webElementConfig ){
+    protected   By extractLocator(WebElementConfig webElementConfig ,Integer row){
         String method = webElementConfig.getMethod();
         if (method==null){
             throw new IllegalArgumentException("The element do not have Method attribute in xml "+webElementConfig.getName());
         }
         LocatorEnum type = LocatorEnum.valueOf(method);
 
-        String path = webElementConfig.getPath();
 
+        // If we don't add "." add the beginning of the xpath , it will search whole page .
+        // Driver should search it only inside root element !
+        if (type==LocatorEnum.Xpath && !webElementConfig.isComponentRoot()) {
+            String path= webElementConfig.getPath();
+            if (path.charAt(0)!='.'){
+                path = "."+path;
+                webElementConfig.setPath(path);
+            }
+        }
+
+        String path = webElementConfig.getPath();
         if (path==null){
             throw new IllegalArgumentException("The element do not have Path attribute in xml "+webElementConfig.getName());
+        }
+
+        if (row!=null){
+            if (row.intValue() <=0){
+                throw new IllegalArgumentException("Illegal row number , it must be larger than 0 , please check key : "+webElementConfig.getName()+" and row number "+row.toString());
+            }
+            path +="["+row.toString()+"]";
         }
 
         return LocatorEnum.getLocator(type,path);
@@ -154,7 +200,7 @@ public abstract class AbstractComponent {
 
     public  final ISelect getSelectElement(WebDriver dr, String el_key, EnhancedExpectedCondition expectedCondition){
 
-        WebElement selectElement = this.getWebElement(dr,el_key,expectedCondition);
+        WebElement selectElement = this.getWebElement(dr,el_key,expectedCondition,null);
         if (selectElement.getTagName().equals("select")){
             return new Select(selectElement);
             //TODO : Need to change better

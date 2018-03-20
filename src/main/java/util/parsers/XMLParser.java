@@ -47,6 +47,7 @@ public class XMLParser {
 
         if (element.attribute("xmlPath")!=null){
 
+            //TODO : Now only support absolute path , we should support relative path
             Element subXmlWebElement = read(new File(element.attributeValue("xmlPath"))).getRootElement();
 
             WebElementConfig subXmlWebElementConfig= loadWebElementConfig(subXmlWebElement);
@@ -105,6 +106,10 @@ public class XMLParser {
                     case "waitTime":
                         webElementConfig.setWaitTime(attributeValue);
                         break;
+                    case "isMulti":
+                        webElementConfig.setMulti(Boolean.valueOf(attributeValue));
+                        break;
+
                 }
             }
         }

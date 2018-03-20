@@ -10,6 +10,9 @@ public class WebElementConfig implements DataTemplate{
     private String method = null;
     private String path = null;
     private int waitTime = 0;
+    private boolean isMulti=false;
+
+    //It describes whether the component is root element in xml file
     private boolean isComponentRoot = false;
     private WebElementConfig parentWebElementConfig = null;
 
@@ -43,6 +46,18 @@ public class WebElementConfig implements DataTemplate{
 
     public String getMethod() {
         return method;
+    }
+
+    public boolean isMulti() {
+        return isMulti;
+    }
+
+    public void setMulti(boolean multi) {
+        isMulti = multi;
+    }
+
+    public void setWaitTime(int waitTime) {
+        this.waitTime = waitTime;
     }
 
     public void setComponentRoot(boolean componentRoot) {

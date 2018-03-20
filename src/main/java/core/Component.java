@@ -99,9 +99,9 @@ public  class Component extends AbstractComponent {
 
 
     @Override
-    protected By extractLocator(String el_key) {
+    protected By extractLocator(String el_key ,Integer row) {
         WebElementConfig webElementConfig = locatorMap.get(el_key);
-        return super.extractLocator(webElementConfig);
+        return super.extractLocator(webElementConfig,row);
     }
 
 

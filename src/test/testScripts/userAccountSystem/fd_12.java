@@ -34,6 +34,7 @@ public class fd_12 extends DriverTestScript{
 
 
         RegisterPage.Components.REGISTRATION_PANEL.getWebElement(driver,"Submit_Button").click();
+
         Assert.assertEquals(RegisterPage.Components.REGISTRATION_PANEL.getWebElement(driver,"Error_Span").getText().trim(),"Wrong email format，please type as 123456@gmail.com");
 
     }

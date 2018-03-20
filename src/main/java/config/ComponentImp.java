@@ -19,7 +19,7 @@ public  interface ComponentImp {
      }
 
      default  WebElement getWebElement(WebDriver driver , String el_key, EnhancedExpectedCondition expectedCondition){
-          return ComponentsHelper.getComponent(this).getWebElement(driver,el_key,expectedCondition);
+          return ComponentsHelper.getComponent(this).getWebElement(driver,el_key,expectedCondition,null);
      }
 
      default ISelect getWebSelect(WebDriver driver , String el_key){
@@ -28,6 +28,14 @@ public  interface ComponentImp {
 
      default ISelect getWebSelect(WebDriver driver , String el_key,EnhancedExpectedCondition expectedCondition){
           return ComponentsHelper.getComponent(this).getSelectElement(driver,el_key,expectedCondition);
+     }
+
+     default  WebElement getListWebElement(WebDriver driver , String el_key, EnhancedExpectedCondition expectedCondition ,int row){
+          return ComponentsHelper.getComponent(this).getWebElement(driver,el_key,expectedCondition,Integer.valueOf(row));
+     }
+
+     default  WebElement getListWebElement(WebDriver driver , String el_key ,int row){
+          return ComponentsHelper.getComponent(this).getWebElement(driver,el_key,null,Integer.valueOf(row));
      }
 }
 

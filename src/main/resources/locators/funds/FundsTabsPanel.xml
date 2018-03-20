@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<DigitalAssets_Panel method="Xpath" path="//div[@class='mat-tab-labels']">
+    <FiatCurrencies_Tab method="Xpath"  path="//div[text()= 'Fiat Currencies']"/>
+    <DigitalAssets_Tab method="Xpath"  path="//div[text()= 'Digital Assets']"/>
+    <TransferHistory_Tab method="Xpath"  path="//div[text()= 'Transfer History']"/>
+    <FinancialAccount_Tab method="Xpath"  path="//div[text()= 'Financial Account']"/>
+</DigitalAssets_Panel>

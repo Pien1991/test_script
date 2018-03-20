@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<WithdrawalAddressAccounts_Panel method="Xpath" path="//div[@class='digitalAccount']">
+
+
+    <AddWithdrawalAddress_Button method="Xpath" path="//div[@class='addAccount']">
+    </AddWithdrawalAddress_Button>
+
+    <WithdrawalAddress_List method="Xpath" path="//ul" waitTime="3">
+        <WithdrawalAddress_Account method="Xpath" path="//li[not(contains(@class,'pagination'))]" isMulti="true">
+            <WithdrawalAddress_Label method="Xpath" path="//div[@class='title']" />
+            <WithdrawalAddress_Currency method="Xpath" path="//div[@class='body']/p[1]"/>
+            <Withdrawal_Address method="Xpath" path="//div[@class='body']/p[2]" />
+        </WithdrawalAddress_Account>
+
+    </WithdrawalAddress_List>
+
+
+</WithdrawalAddressAccounts_Panel>

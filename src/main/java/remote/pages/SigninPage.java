@@ -4,6 +4,8 @@ import config.ComponentImp;
 import config.PagesEnum;
 import core.PageObject;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by ShepardPin on 1/3/2018.
@@ -27,6 +29,8 @@ public class SigninPage  extends PageObject{
         enterEmail(email);
         enterPassword(password);
         clickSubmitButton();
+        new WebDriverWait(driver,6).until(ExpectedConditions.urlContains("succeed"));
+
     }
 
     public void enterPassword( String password) {

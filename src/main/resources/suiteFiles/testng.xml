@@ -31,7 +31,7 @@
 		<parameter name="DRIVER" value="CHROME"/>
 		<parameter name="SYSTEM" value="MAC"/>
 		<packages>
-			<package name="testScripts.*">
+			<package name="testScripts.userAccountSystem">
 			</package>
 		</packages>
 	</test>

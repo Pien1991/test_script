@@ -17,7 +17,9 @@ public class fd_27 extends DriverTestScript{
     @Test
     public void test1() throws Exception {
         SigninPage page = (SigninPage) NavigationHelper.navigate(driver, PagesEnum.SIGNIN);
-        page.signin(UsersHelper.getUserByAlias("verified_non_kyc_user").getUsername(),"1234");
+        page.enterEmail(UsersHelper.getUserByAlias("verified_non_kyc_user").getUsername());
+        page.enterPassword("123456");
+        page.clickSubmitButton();
         Assert.assertEquals
                 (SigninPage.Components.SIGNIN_PANEL.getWebElement(driver,"ErrorMessage_Text").getText().trim(),
                         "Incorrect username or password");
